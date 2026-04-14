@@ -17,6 +17,15 @@
 * **Concurrency:** Kotlin Coroutines & Flow
 * **Dependency Injection:** Hilt/Dagger
 
+## 🧠 Technical Challenges & Solutions
+
+### The "Stale Balance" Problem
+**Challenge:** During the initial development, the application faced data inconsistency issues. The customer's total balance would sometimes mismatch the sum of their transactions (Fills & Payments) after multiple edits or deletions. This was due to an incremental update logic that was prone to race conditions and stale state.
+
+**The Solution:** I refactored the financial engine to implement a **Single Source of Truth (SSOT)** pattern.
+* Created a dedicated `SyncCustomerBalanceUseCase`.
+* Instead of adding/subtracting from a cached balance, the system now performs a **full re-calculation** of the balance directly from the transaction history using `BigDecimal` for every critical update.
+* This ensures that the balance is always mathematically perfect and consistent with the database state, eliminating any risk of data drift.
 ## 📸 صور التطبيق (Screenshots)
 <img width="297" height="592" alt="image" src="https://github.com/user-attachments/assets/6cec8703-ec33-41c9-8808-c43fae9ce324" />
 <img width="292" height="557" alt="image" src="https://github.com/user-attachments/assets/4019aaa6-d27a-48e1-b42f-3e71111c0642" />
