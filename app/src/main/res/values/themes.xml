@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.WaterEdition" parent="android:Theme.Material.Light.NoActionBar" />
+
+    <!-- Core Splash Screen Configuration -->
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!-- The icon to show during startup -->
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_app_logo</item>
+        <!-- The background color of the startup splash -->
+        <item name="windowSplashScreenBackground">@color/navy_background</item>
+        <!-- The theme to jump to once the app is loaded -->
+        <item name="postSplashScreenTheme">@style/Theme.WaterEdition</item>
+    </style>
+</resources>
